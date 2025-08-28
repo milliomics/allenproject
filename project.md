@@ -67,7 +67,7 @@ By leveraging high‑resolution connectomics and activity measurements, this pro
 
 ### References
 
-1. Computational and experimental studies showing that the ratio of axonal radius to length affects spike propagation; increasing axonal length or decreasing radius leads to modulated trains and intermittent failures.
-2. Research demonstrating that dendritic tree size and topology determine whether pyramidal neurons burst or fire tonically; only an intermediate range of dendritic sizes supports burst firing, and altering branching patterns or total length can transform a cell from bursting to tonic firing.
-3. Findings in dopaminergic neurons showing that shorter dendrites and simpler dendritic architecture correlate with more irregular firing patterns, whereas larger dendritic domains and specific dendritic distributions promote regular firing.
-4. Reports on the mouse visual cortex indicating that neurons in primary visual cortex (V1) have the smallest receptive fields among visual areas, giving them the highest spatial resolution.
+1. Ofer, N., Shefi, O., & Yaari, G. (2017). Branching morphology determines signal propagation dynamics in neurons. Scientific Reports, 7, 8877. https://doi.org/10.1038/s41598-017-09184-3
+2. van Elburg, R. A. J., & van Ooyen, A. (2010). Impact of dendritic size and dendritic topology on burst firing in pyramidal cells. PLoS Computational Biology, 6(5), e1000781. https://doi.org/10.1371/journal.pcbi.1000781
+3. Montero, T., Gatica, R. I., Farassat, N., Meza, R., González‑Cabrera, C., Roeper, J., & Henny, P. (2021). Dendritic architecture predicts in vivo firing pattern in mouse ventral tegmental area and substantia nigra dopaminergic neurons. Frontiers in Neural Circuits, 15, 769342. https://doi.org/10.3389/fncir.2021.769342
+4. Wandell, B. A., & Smirnakis, S. M. (2009). Plasticity and stability of visual field maps in adult primary visual cortex. Nature Reviews Neuroscience, 10(12), 873–884. https://doi.org/10.1038/nrn2745
