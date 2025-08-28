@@ -11,8 +11,20 @@ Advances in connectomics provide nearly complete reconstructions of neurons, inc
 ### Research Questions and Hypotheses
 
 1. **Do neurons with similar firing patterns form structural clusters?** Hypothesis: neurons exhibiting similar firing patterns (e.g., regular spiking, bursting, irregular) will share common structural features such as output synapse number, axonal length, and dendritic complexity.
-2. **Which structural features determine how a neuron fires?** Hypothesis: features including total axonal length and radius, number of output synapses, number of target cell types, axon initial segment size, soma depth, dendritic arbor length, branching patterns, and the spatial distribution of outputs (layers/regions) will correlate with firing pattern metrics (frequency, burst index, irregularity). Prior work indicates that increasing axonal length relative to diameter can cause fragmented or failed spike trains[1], while altering dendritic length or topology can shift firing from burst to tonic[2], and shorter dendritic domains in dopaminergic neurons associate with irregular firing[3].
-3. **Are firing patterns correlated with connectivity motifs?** Local circuits in V1 display specific connectivity patterns (e.g., one‑to‑one, one‑to‑many, and many‑to‑one motifs), and neurons with similar responses are preferentially connected[4][5]. Hypothesis: neurons that serve as hubs (receiving many inputs or sending many outputs) will exhibit distinct firing patterns compared with neurons engaged in one‑to‑one motifs; for example, cells that receive many convergent inputs may fire more irregularly, whereas neurons that provide strong inhibition to many targets may show regular or bursty firing. We will examine whether connectivity motif type (including inhibitory vs. excitatory connections) predicts firing pattern metrics.
+
+# are they correlated with different stimuli,Ca activity is slow, cells are all bursting. better to get cells that have more and fewer events/activity). rises quickly, slowly slowly (s) decay, Ican get how often burst (1-2/min). 180 evens/h is active, 20 is low. 
+# oreientaiton/direction selectivity, surround suppression index are already calcualted. full field, less A, small window gives more Activity.
+look at "burst" activity patterns regardless of stumuli, after that map that on when running, what is pupal diameter
+6Hz
+this is interseting:  dendritic length or topology can shift firing from burst to tonic
+axons is tough
+loooking at spine/shaft let us knwo ex/inhib
+prfile where these connection are spatially located
+if one fires more, it has more excitatory close to spine? versus quite inhibitroy targeted cells (shaft, soma)
+feature determination: can look at all population, not only co-registered, to set my threshold to see who is what, then go to population
+
+3. **Which structural features determine how a neuron fires?** Hypothesis: features including total axonal length and radius, number of output synapses, number of target cell types, axon initial segment size, soma depth, dendritic arbor length, branching patterns, and the spatial distribution of outputs (layers/regions) will correlate with firing pattern metrics (frequency, burst index, irregularity). Prior work indicates that increasing axonal length relative to diameter can cause fragmented or failed spike trains[1], while altering dendritic length or topology can shift firing from burst to tonic[2], and shorter dendritic domains in dopaminergic neurons associate with irregular firing[3].
+4. **Are firing patterns correlated with connectivity motifs?** Local circuits in V1 display specific connectivity patterns (e.g., one‑to‑one, one‑to‑many, and many‑to‑one motifs), and neurons with similar responses are preferentially connected[4][5]. Hypothesis: neurons that serve as hubs (receiving many inputs or sending many outputs) will exhibit distinct firing patterns compared with neurons engaged in one‑to‑one motifs; for example, cells that receive many convergent inputs may fire more irregularly, whereas neurons that provide strong inhibition to many targets may show regular or bursty firing. We will examine whether connectivity motif type (including inhibitory vs. excitatory connections) predicts firing pattern metrics.
 
 ### Data Sources
 
