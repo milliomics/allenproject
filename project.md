@@ -27,7 +27,6 @@ Advances in connectomics provide nearly complete reconstructions of neurons, inc
   - Burst index (ratio of bursts to single spikes) or irregularity index.
   - Orientation selectivity index and preferred orientation (if available).
   - Receptive field location (visual field coordinates) and size.
-- Cell‑type annotations — transcriptomic labels (e.g., inhibitory subclasses such as Sst, Vip) and morphological types.
 
 ### Methods
 
@@ -70,4 +69,4 @@ By leveraging high‑resolution connectomics and activity measurements, this pro
 1. Ofer, N., Shefi, O., & Yaari, G. (2017). Branching morphology determines signal propagation dynamics in neurons. Scientific Reports, 7, 8877. https://doi.org/10.1038/s41598-017-09184-3
 2. van Elburg, R. A. J., & van Ooyen, A. (2010). Impact of dendritic size and dendritic topology on burst firing in pyramidal cells. PLoS Computational Biology, 6(5), e1000781. https://doi.org/10.1371/journal.pcbi.1000781
 3. Montero, T., Gatica, R. I., Farassat, N., Meza, R., González‑Cabrera, C., Roeper, J., & Henny, P. (2021). Dendritic architecture predicts in vivo firing pattern in mouse ventral tegmental area and substantia nigra dopaminergic neurons. Frontiers in Neural Circuits, 15, 769342. https://doi.org/10.3389/fncir.2021.769342
-4. Wandell, B. A., & Smirnakis, S. M. (2009). Plasticity and stability of visual field maps in adult primary visual cortex. Nature Reviews Neuroscience, 10(12), 873–884. https://doi.org/10.1038/nrn2745
+4. Wandell, B. A., & Smirnakis, S. M. (2009). Plasticity and stability of visual field maps in adult primary visual cortex. Nature Reviews Neuroscience, 10(12), 873–884. https://doi.org/10.1038/nrn2741
