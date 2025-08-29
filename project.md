@@ -1,6 +1,6 @@
 ## Project Proposal: Linking Neuronal Structure to Firing Patterns in Mouse V1
 
-**Keywords**: structure–function, morphology, connectomics, firing patterns, dendritic topology, axonal length, axon initial segment, connectivity motifs, V1 (primary visual cortex), two‑photon calcium imaging, burst firing, irregular firing, receptive fields, clustering, regression, permutation tests
+**Keywords**: structure–function, morphology, connectomics, firing activity (spikes/hour), dendritic topology, axonal length, axon initial segment, synapse spatial targeting (spine/shaft/soma, layer), V1 (primary visual cortex), two‑photon calcium imaging (6 Hz), pupil diameter, orientation/direction selectivity (OSI/DSI), suppression index, clustering, regression, permutation tests
 
 ### Background and Motivation
 
@@ -10,10 +10,11 @@ Advances in connectomics provide nearly complete reconstructions of neurons, inc
 
 ### Research Questions and Hypotheses
 
-1. **Do neurons with similar firing patterns form structural clusters?** Hypothesis: neurons exhibiting similar firing patterns (e.g., regular spiking, bursting, irregular) will share common structural features such as output synapse number, axonal length, and dendritic complexity.
+1. **Do neurons with similar firing activity (spikes/hour) form structural clusters?** Hypothesis: neurons exhibiting high versus low activity (e.g., ≥180 spikes/hour vs. ≤20 spikes/hour) will differ in structural features such as dendritic complexity and synaptic targeting. Because two‑photon calcium imaging is slow (≈6 Hz) and poorly suited to detect true bursts, we will focus on activity rate and coarse activity patterns rather than burst metrics. We will first profile activity across all imaged neurons (not only co‑registered ones), ignoring stimulus conditions, to identify recurring activity patterns. Then, for co‑registered subsets, we will map these patterns onto conditions (e.g., running vs. stationary, full‑field vs. small‑window stimuli) and existing behavioral/visual metrics (pupil diameter, OSI/DSI, suppression index).
 
-3. **Which structural features determine how a neuron fires?** Hypothesis: features including total axonal length and radius, number of output synapses, number of target cell types, axon initial segment size, soma depth, dendritic arbor length, branching patterns, and the spatial distribution of outputs (layers/regions) will correlate with firing pattern metrics (frequency, burst index, irregularity). Prior work indicates that increasing axonal length relative to diameter can cause fragmented or failed spike trains[1], while altering dendritic length or topology can shift firing from burst to tonic[2], and shorter dendritic domains in dopaminergic neurons associate with irregular firing[3].
-4. **Are firing patterns correlated with connectivity motifs?** Local circuits in V1 display specific connectivity patterns (e.g., one‑to‑one, one‑to‑many, and many‑to‑one motifs), and neurons with similar responses are preferentially connected[4][5]. Hypothesis: neurons that serve as hubs (receiving many inputs or sending many outputs) will exhibit distinct firing patterns compared with neurons engaged in one‑to‑one motifs; for example, cells that receive many convergent inputs may fire more irregularly, whereas neurons that provide strong inhibition to many targets may show regular or bursty firing. We will examine whether connectivity motif type (including inhibitory vs. excitatory connections) predicts firing pattern metrics.
+2. **Which structural and synaptic features determine activity levels?** Hypothesis: dendritic length and topology (and related morphological descriptors) modulate whether neurons exhibit higher or lower spikes/hour, consistent with prior work showing dendritic changes can shift firing from burst‑like to tonic regimes[2]. Additional connectivity‑level features will include the spatial placement of synapses: for higher‑activity neurons we expect a larger fraction of excitatory synapses on spines (and in specific layers/compartments), whereas inhibitory‑targeted cells may show more shaft/somatic inhibitory synapses and distinct laminar distributions. We will test relationships between spikes/hour and: total axonal length/radius, counts of outputs/targets, AIS size, soma depth, dendritic arbor length/branching, and synapse spatial targeting (spine vs. shaft/soma, distance to soma, layer).
+
+Note: A broader analysis of abstract connectivity motifs (e.g., one‑to‑one or hub‑like patterns) is lower priority here, as small numbers of connected pairs may have limited interpretability for the present aims.
 
 ### Data Sources
 
@@ -21,30 +22,27 @@ Advances in connectomics provide nearly complete reconstructions of neurons, inc
   - Total axonal length and average diameter.
   - Number of output synapses per neuron.
   - Number of distinct target neuron types (based on cell‑type labels).
-  - Spatial distribution of synaptic outputs (layer distribution and radial distances).
+  - Spatial distribution of synaptic outputs (layer distribution, radial distances, distance to soma) and compartment targeting (spine vs. shaft/soma).
   - Axon initial segment length and diameter (if available).
   - Soma depth and layer identity.
   - Dendritic arbor length, number of dendritic branches, and convex hull volume (proxy for dendritic domain).
-- Two‑photon calcium imaging data – neuronal firing patterns recorded in vivo for the same volume. From fluorescence traces we will derive firing metrics:
-  - Mean firing rate (Hz), peak amplitude.
-  - Burst index (ratio of bursts to single spikes) or irregularity index.
-  - Orientation selectivity index and preferred orientation (if available).
+- Two‑photon calcium imaging data – neuronal activity recorded in vivo for overlapping volumes. Given slow sampling (≈6 Hz) and calcium kinetics, we will emphasize spikes/hour (activity rate proxies) over burst metrics, and analyze all imaged neurons (not only co‑registered). Additional features available from existing pipelines/advisors include pupil diameter, OSI/DSI, and suppression index.
 - Cell‑type annotations – transcriptomic labels (e.g., inhibitory subclasses such as Sst, Vip) and morphological types.
 
 ### Methods
 
 #### 1. Feature extraction
 
-- Morphological metrics: For each neuron we will compute morphological descriptors from the connectome. These include total axon length, number of branches, maximum branch order, number of output synapses, synaptic density per unit length, number of distinct target types, spatial distribution of outputs across cortical layers and radial distance, soma depth, dendritic arbor length, number of dendritic branches, and dendritic convex hull volume. These features are inspired by literature linking morphology to firing properties: dendritic tree size and topology influence burst firing[2], while dendritic domain size and distribution correlate with firing irregularity in dopaminergic neurons[3]. Axonal length and radius modulate spike train propagation[1].
-- Firing metrics: For each neuron with two‑photon data we will extract firing rates, burst index (ratio of spikes within bursts vs isolated), irregularity (coefficient of variation of inter‑spike intervals), and orientation selectivity. We will classify neurons into firing pattern categories (e.g., tonic, bursty, irregular) based on established thresholds.
-- Connectivity motif classification: Using the connectome, we will classify each neuron’s connectivity motif (e.g., one‑to‑one, one‑to‑many, many‑to‑one) by counting the number of postsynaptic and presynaptic partners. We will compute features such as the number of postsynaptic targets, the multiplicity of synapses to each target, and the distribution of postsynaptic cell types (excitatory vs. inhibitory).
+- Morphological metrics: total axonal length/radius, branch counts, maximum branch order, output synapse counts, synaptic density per unit length, number of distinct target types, layer/radial distributions, soma depth, dendritic arbor length/branching, and dendritic convex hull volume.
+- Activity metrics from two‑photon: spikes/hour (activity rate proxies) per neuron; initially ignore stimulus conditions and profile activity across all imaged neurons to discover activity patterns; later, for co‑registered subsets, relate activity to running, full‑field vs. small‑window stimuli, pupil diameter, OSI/DSI, and suppression index. Given 6 Hz sampling, we will not rely on burst indices.
+- Synapse spatial targeting: for each neuron, quantify the compartmental distribution of synapses (spine vs. shaft/soma), laminar placement, and distances to soma; summarize excitatory vs. inhibitory targeting where available.
 
 #### 2. Statistical analysis
 
-- Clustering: Cluster neurons based on firing metrics (e.g., k‑means or hierarchical clustering). For each cluster, examine structural features to identify common patterns; test whether within‑cluster feature distributions are narrower than chance.
-- Correlation and regression: Compute Pearson/Spearman correlations between morphological features and continuous firing metrics (e.g., firing rate, burst index). Use linear/logistic regression or decision trees for prediction, avoiding unnecessary high‑dimensional methods.
-- Within‑type analysis: For each cell type (e.g., Sst inhibitory), assess heterogeneity by correlating morphology and firing patterns within type.
-- Cross‑type comparisons: Test whether different cell types share similar firing patterns and structural metrics (e.g., convergent determinants across types).
+- Clustering: Identify activity classes from spikes/hour using k‑means/GMM; use thresholds (e.g., ≥180 vs. ≤20 spikes/hour) as anchors for “high/low” activity groups.
+- Correlation and regression: Relate spikes/hour to structural and synapse‑spatial features (Pearson/Spearman, linear/logistic regression). Include laminar/compartment predictors (spine vs. shaft/soma) and distances.
+- Within‑type analysis: For each transcriptomic/morphological type, assess heterogeneity in activity vs. structure/synapse placement.
+- Cross‑type comparisons: Test whether distinct types converge to similar activity–structure relationships.
 
 #### 3. Validation and interpretation
 
@@ -54,7 +52,7 @@ Advances in connectomics provide nearly complete reconstructions of neurons, inc
 
 ### Expected Outcomes and Significance
 
-We anticipate discovering structural clusters corresponding to firing patterns.  For instance, neurons with high burst indices may have longer dendritic trees and more complex branching, consistent with models showing that burst firing requires intermediate dendritic sizes[2].  Neurons with irregular firing may have smaller dendritic domains and simpler architecture[3].  Axonal length, output synapse number, and the number of target types might predict firing rate and irregularity[1].  In addition, we expect that connectivity motifs will correlate with firing patterns: neurons engaged in one‑to‑many excitatory motifs may exhibit bursty or regular spiking, whereas neurons receiving many convergent inputs (many‑to‑one motifs) may fire more irregularly.  Inhibitory connectivity patterns may further distinguish firing classes.
+We expect to discover activity‑defined clusters (high vs. low spikes/hour and intermediate patterns) and corresponding structural/synaptic correlates. For example, higher‑activity neurons may exhibit longer/more complex dendritic trees and characteristic excitatory synapse placement (spine‑rich, specific layers), whereas lower‑activity neurons may align with different synapse compartment/laminar profiles. Axonal length, output synapse number, and target diversity may further predict activity levels. After initial, stimulus‑agnostic profiling, mapping co‑registered neurons back to conditions (running, full‑field vs. small‑window) and behavioral/visual metrics (pupil, OSI/DSI, suppression index) will test contextual modulation of these activity patterns.
 
 Successfully predicting firing patterns from connectomic features would demonstrate that morphology and connectivity encode aspects of neuronal function.  Conversely, if firing patterns predict certain connectivity features (e.g., neurons with high burst indices have more outputs onto inhibitory interneurons or form specific one‑to‑many motifs), these patterns could be used to guide proof‑reading and annotation in connectomics, reducing manual labor.  Understanding structure–function relationships in V1 also informs computational models of vision and can be extended to other cortical areas.
 
